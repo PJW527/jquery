@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-4</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.1.2.js"></script>               <!--           제이쿼리 색상 관련 애드온 -->
+
+    <!-- 
+
+        slide 효과 : 제이쿼리에서 slidedown, slideup, slideToggle 함수를 제공함
+                                                                                                        
+        사용법 : $(선택자).slideDown(시간, 실행함수);       
+
+        animate: 제이쿼리를 통해서 사용자 지정 애니메이션을 만들수 있는 함수
+        
+        - animate를 이용하면 css의 animation 속성을 손쉽게 만들수 있음
+        - 시간은 1/1000초 사용(slow, fast)
+        - 애니메이션 동작을 할 속성을 여러개 지정할수 있음
+        - 속성값 입력 시 상대값으로 데이터를 입력할수 있음
+        += , -= 을 사용하여 기존의 속성값에 데이터를 추가할수 있음
+        - 여러개의 애니메이션을 사용하여 단계적으로 동작하는 애니메이션을 제작할수 있음
+
+        시용법 : $(선택자).animate({속성명1:속성값1, 속성명2:속성값2, ...}, 속도, 실행함수)
+
+
+        animate에서 속성명을 입력할때 css 속성명이 '-'가 들어가있는 속성명은 -를 제거하고 이어지는 단어의 첫문자를
+        대문자로 입력해야된다. ex) font-size >>>>>>>>>>  fontSize   
+        
+        
+        stop( ): 애니메이션이 효과가 끝나기 전에 애니메이션을 중단시키는 함수
+
+        사용법 : $(선택자).stop(stopAll.goToEnd)
+        - stopAll : 기본값 false, 애니메이션 대기열도 함께 중지하는지 여부
+        - goToEnd : 기본값 false, 애니메이션이 stop()함수 실행과 동시에 완료로 처리할 것인지 여부
+
+                                            - 01-05 파일 참고
+     -->
+    <script>
+        $(document).ready(function() {                                      // 제이쿼리 시작에 반필수적인 수식인듯
+            $("#div01 > .flip").on("click", function(){                         //클릭하면 반응을 보임
+                $("#div01 > .panel").slideDown();                                   // slideDown같이
+            });
+
+            $("#div02 > .flip").on("click", function(){
+                $("#div02 > .panel").slideUp("slow");
+            });
+
+            $("#div03 > .flip").on("click", function(){
+                $("#div03 > .panel").slideToggle("slow");
+            });
+
+            // animate 함수
+            $("#div04 > .ani1").on("click", function(){
+                $("#div04 > .ani1").animate({left : "250px"});              // 클릭하면 왼쪽으로 250px 이동
+            });
+
+
+            $("#div04 > .ani2").on("click", function(){
+                $("#div04 > .ani2").animate({
+                    left: "250px",
+                    opacity : "0.5",
+                    height : "150px",
+                    width : "150px"
+                });
+                
+            });
+
+            $("#div04 > .ani3").on("click", function() {
+                $("#div04 > .ani3").animate({
+                    left: "250px",
+                    height: "+=100px",
+                    width: "+=100px"                                // 클릭할수록 100px 커짐
+                });
+            });
+
+            $("#div04 > .ani4").on("click", function(){
+                $("#div04 > .ani4").animate({
+                    height : "300px",
+                    opacity: "0.4"
+                }, "slow");
+
+                $("#div04 > .ani4").animate({
+                    width: "300px",
+                    opacity: "0.8"
+                }, "slow");
+
+
+                $("#div04 > .ani4").animate({
+                    height: "100px",
+                    opacity: "0.4"
+                }, "slow");
+
+                $("#div04 > .ani4").animate({
+                    width: "100px",
+                    opacity: "0.8"
+                }, "slow");
+            });
+
+
+
+
+
+        // 문제 animate 함수를 사용하여 div 태그의 위치를 왼쪽에서 오른쪽으로 300px 이동시키고 
+        //  이동 후 div 태그내의 p 글자가 8px 작아졌다가 다시 24px로 커지는 애니메이션 작성
+        // - div 태그의 크기 width, height 200px
+        // - p태그의 글자 hello
+
+
+            $("#div04 > .ani5").on("click", function(){
+                $("#div04 > .ani5").animate({
+                    left: "300px"
+                });
+
+                $("#div04 > .ani5").animate({
+                    fontSize : "8px"
+                });
+
+                $("#div04 > .ani5").animate({
+                    fontSize : "24px",
+                    color: "RGB(100, 100, 100)"
+                });
+            });
+        });
+
+ 
+
+
+    </script>
+    <style>
+        .panel, .flip{
+            padding: 5px;
+            text-align: center;
+            background-color: ivory;
+            border: 1px solid lightgray;
+        }
+
+        .panel {
+            padding: 50px;
+        }
+
+        #div01 > .panel {
+            display: none;
+        }
+
+        #div04 {
+            position: relative;
+
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+
+        #div04 > .ani1 {
+            position: absolute;
+            background-color: yellowgreen;
+        }
+
+        #div04 > .ani2 {
+            position: absolute;
+            background-color: yellowgreen;
+            top: 150px;
+            left: 0px;
+        }
+
+        #div04 > .ani3 {
+            position: absolute;
+            background-color: yellowgreen;
+            top: 260px;
+            left: 0px;
+        }
+
+        #div04 > .ani4 {
+            position: absolute;
+            background-color: yellowgreen;
+            top: 370px;
+            left: 0px;
+        }
+
+        #div04 > .ani5 {
+            position: absolute;
+            background-color: yellowgreen;
+            top: 480px;
+            left: 0px;
+            font-size: 16px;
+            width: 200px;
+            height: 200px;
+            font: black;
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>slide down</h3>
+        <div class="flip">클릭 시 아래의 div 영역 표시</div>
+        <div class="panel">클릭 시 표시되는 div 영역</div>
+    </div>
+    
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>slide up</h3>
+        <div class="flip">클릭 시 아래의 div 영역 숨김</div>
+        <div class="panel">클릭 시 숨겨지는 div 영역</div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>slide toggle</h3>
+        <div class="flip">클릭 시 아래의 div 영역 숨김/표시</div>
+        <div class="panel">클릭 시 숨김/표시되는 div 영역</div>
+    </div>
+
+    <div id="div04">
+        <h3>animate</h3>
+
+        <div class="box ani1"></div>
+
+        <div class="box ani2">클릭시 이동하면서 커지고 투명해짐</div>
+
+        <div class="box ani3">클릭시 상대값을 사용하여 크기가 커짐</div>
+
+        <div class="box ani4">클릭시 애니메이션 연계동작</div>
+
+        <br><br><br><br><br>
+
+        <div class="box ani5"><p>hello 문제</p></div>
+
+        
+
+
+        <br><br><br><br><br><br><br><br>
+
+    </div>
+
+</body>
+</html>

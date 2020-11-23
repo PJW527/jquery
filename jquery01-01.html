@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-1</title>
+    <!-- 제이쿼리 사용방법 
+
+        제이쿼리 사이트에서 파일을 다운 - 자신의 서버에 파일을 동록하기 때문에 로딩시간이 짧고 본인서버에 문제가 있지 않는한 무조건 동작을 보장
+
+        CDN으로 받는방법 = 외부 서버에서 파일을 로딩하기 때문에 자신의 서버자원을 소비하지 않음. 외부서버에 문제발생시 파일이 로딩되지 않음. 속도문제 -->
+
+    <!-- 제이쿼리는 기본적으로 CSS 선택자를 이용하여 HTML 태그를 선택함 -->
+
+
+    <!-- <script src="jquery-3.5.1.js"></script>                              제이쿼리를 쓰려면 먼저 제이쿼리 파일을 로딩 -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  <!--  따로 받을필요 없이 구글쪽 서버에서 받아오는거 -->
+    <script>
+
+
+    </script>
+    
+    
+</head>
+<body>
+    <button id="btn01" type="button">자바스크립트로 버튼 이벤트</button>
+
+    <button id="btn02" type="button">jquery로 버튼 이벤트</button>
+
+    <button id="btn03" type="button">cdn으로 jquery 로딩하여 버튼 이벤트</button>
+
+    <script>
+
+// 기존 자바스크립트는 html 선택부분과 실행영역을 나누어 입력하지만 제이쿼리는 html 선태과 동시에 실행영역이 입력됨 
+
+// 제이쿼리는 기본적으로 $기호를 사용함.  $ 기호가 나오면 제이쿼리를 사용한다는 의미
+// $(css선택자).jquery함수();
+// css 선택자를 그대로 사용하기 때문에 #은 id선택자, .dms class 선택자, html태그는 태그 선택자로 동작함
+// 제이쿼리는 기본적으로 자바스크립트 문법을 그대로 사용하기 때문에 제이쿼리 함수를 제외하고는 자바스크립트와 동일함
+
+// 제이쿼리 이벤트 : 제이쿼리의 이벤트는 제이쿼리 사이트의 문서를 참고
+
+        var btn01 = document.getElementById("btn01")
+        document.getElementById
+        document.getElementsByClassName
+        document.getElementsByTagName
+
+
+        btn01.addEventListener("click", function() {
+            alert("자바스크립트로 버튼 이벤트 발생");
+        });
+
+        $("#btn02").on("click", function() {
+            alert("jquery로 버튼이벤트 발생");                                                                                                    
+        });
+
+        $("#btn03").on("click", function() {
+            alert("cdn으로 jquery 로딩후 버튼이벤트 발생");
+        });
+    </script>
+    <!-- f12 - network - f5를 누르는걸로 제이쿼리 파일 로딩 확인 가능 -->
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 3-3</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        // 형제 태그 선택하기
+        // siblings() : 선택한 요소의 모든 형제 요소를 선택
+        // - $(선택자).siblings()
+        // - $(선택자).siblings("필터")
+        // next() : 선택한 요소의 바로 다음 형제 요소를 선택
+        // - $(선택자).next()
+        // nextAll() : 선택한 요소의 바로 다음부터 끝까지의 형제 요소를 선택
+        // - $(선택자).nextAll()
+        // nextUntil() : 선택한 요소와 지정한 요소 사이의 형제 요소를 선택
+        // - $(선택자).nextUntil("필터")
+        // prev() : 선택한 요소의 바로 이전 형제 요소를 선택
+        // prevAll() : 선택한 요소의 바로 이전부터 끝까지의 형제 요소를 선택
+        // prevUntil() : 선택한 요소와 지정한 요소 사이의 형제 요소를 선택
+
+
+
+
+
+
+        $(document).ready(function(){
+            $("#div01 h2").siblings().css({                 // 자기를 제외한 형제들을 선택해 빨간색으로 칠한다
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            $("#div02 h2").siblings("p").css({                 // 지정한 요소의 형제들중 p만 선택됨
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            $("#div03 h2").next().css({                 // 지정한 요소의 다음 요소인 h3만 선택됨
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            $("#div04 h2").nextAll().css({                 // 지정한 요소의 다음 요소인 h3만 선택됨
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            $("#div05 h2").nextUntil("h6").css({                 // 지정한 요소의 다음 요소부터 h6 이전까지만 선택됨
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            // prev도 다 비슷비슷함
+
+
+        });
+
+    </script>
+    <style>
+        .siblings * {
+            display: block;
+            border: 2px solid lightgray;
+            color: lightgray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>siblings() 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그 p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h2</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+    
+    <div id="div02">
+        <h3>siblings() 필터 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그 p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h2</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+    
+    <div id="div03">
+        <h3>next() 필터 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그 p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h2</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+    
+    <div id="div04">
+        <h3>nextAll() 필터 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그 p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h2</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="div05">
+        <h3>nextUntil() 사용</h3>
+        <div class="siblings">
+            <p>prev 2번째 형제 태그 p</p>
+            <span>prev 형제 태그 span</span>
+            <h2>지정한 태그 h2</h2>
+            <h3>next 형제 태그 h3</h3>
+            <h4>next 2번째 형제 태그 h4</h4>
+            <h5>next 3번째 형제 태그 h5</h5>
+            <h6>next 4번째 형제 태그 h6</h6>
+            <p>next 5번째 형제 태그 p</p>
+        </div>
+    </div>
+
+</body>
+</html>

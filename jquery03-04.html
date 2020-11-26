@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 3-4</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        // first() : 지정한 요소의 첫번째 요소를 선택 
+        // last() : 지정한 요소의 마지막 요소를 선택
+        // eq() : 선택한 요소의 특정 index 번호를 선택
+        // filter() : 선택한 요소 중 필터링을 통해 지정한 요소를 선택
+        // not() : 선택한 요소 중 기준에 맞지 않는 요소를 선택 (filter 반대)
+
+
+        $(document).ready(function(){
+            $("#div01 > div").first().css("background-color", "yellow");        // 첫번째 문단만 선택됨
+                                                                                    // 만약 "> div"를 "p"로 바꾸면 div 태그 밖에 있는 p태그가 선택됨
+        
+
+            $("#div02 > div").last().css("background-color", "yellow");        // 마지막 문단만 선택됨
+
+            $("#div03 p").eq(1).css("background-color", "yellow");          // 1번을 선택하니 index 1번만 선택됨 (index는 0부터 시작)
+
+            $("#div04 p").filter(".intro").css("background-color", "yellow");  // intro 클래스가 붙은 태그만 검색 
+
+            $("#div05 p").not(".intro").css("background-color", "yellow");  // intro 클래스가 안 붙은 태그만 검색          
+
+                                                                                   
+        });
+
+
+    </script>
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 5px;
+            margin: 15px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>first() 사용</h3>
+
+        <p>div 태그 밖에 있는 첫번째 p 태그</p>
+        <div class="box">
+            <p>첫번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>첫번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>두번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>두번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>세번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>세번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>last() 사용</h3>
+
+        <p>div 태그 밖에 있는 첫번째 p 태그</p>
+        <div class="box">
+            <p>첫번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>첫번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>두번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>두번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>세번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>세번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+
+    </div>
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>eq 사용하기</h3>
+
+        <p>eq를 사용하여 표현하면 index 0번</p>
+        <p>eq를 사용하여 표현하면 index 1번</p>
+        <p>eq를 사용하여 표현하면 index 2번</p>
+        <p>eq를 사용하여 표현하면 index 3번</p>
+        <p>eq를 사용하여 표현하면 index 4번</p>
+
+    </div>
+
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>filter() 사용하기</h3>
+
+        <p>필터로 검색하여 선택할 태그 1번</p>
+        <p class="intro">필터로 검색하여 선택할 태그 2번</p>
+        <p class="intro">필터로 검색하여 선택할 태그 3번</p>
+        <p>필터로 검색하여 선택할 태그 4번</p>
+
+    </div>
+
+    <br><hr><br>
+
+    <div id="div05">
+        <h3>not() 사용하기</h3>
+
+        <p>필터로 검색하여 선택할 태그 1번</p>
+        <p class="intro">필터로 검색하여 선택할 태그 2번</p>
+        <p class="intro">필터로 검색하여 선택할 태그 3번</p>
+        <p>필터로 검색하여 선택할 태그 4번</p>
+
+    </div>
+    
+</body>
+</html>
